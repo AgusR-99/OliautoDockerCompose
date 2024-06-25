@@ -32,6 +32,7 @@ services:
       dockerfile: Auth/Dockerfile
 
   sessionapi:
+    container_name: SessionAPI
     image: agusr99/sessionapi
     ports:
       - "30002:3002"
@@ -48,6 +49,7 @@ services:
 
 
   archivosapi:
+    container_name: ArchivosAPI
     image: agusr99/archivosapi
     ports:
       - "30003:3003"
@@ -67,6 +69,7 @@ services:
 
 
   clientesapi:
+    container_name: ClientesAPI
     image: agusr99/clientesapi
     ports:
       - "30004:3004"
@@ -83,6 +86,7 @@ services:
 
 
   generalesapi:
+    container_name: GeneralesAPI
     image: agusr99/generalesapi
     ports:
       - "30005:3005"
@@ -99,6 +103,7 @@ services:
 
 
   logisticaapi:
+    container_name: LogisticaAPI
     image: agusr99/logisticaapi
     ports:
       - "30006:3006"
@@ -115,6 +120,7 @@ services:
 
 
   repuestoapi:
+    container_name: RepuestoAPI
     image: agusr99/repuestoapi
     ports:
       - "30007:3007"
@@ -131,6 +137,7 @@ services:
 
 
   tallerapi:
+    container_name: TallerAPI
     image: agusr99/tallerapi
     ports:
       - "30008:3008"
