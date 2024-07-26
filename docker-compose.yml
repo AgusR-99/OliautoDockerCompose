@@ -1,0 +1,174 @@
+version: '3.4'
+
+services:
+  apigateway:
+    image: agusr99/apigateway
+    ports:
+      - "30000:3000"
+    environment: 
+      JWTKEY: ${JWTKEY}
+      ASPNETCORE_ENVIRONMENT: ${ASPNETCORE_ENVIRONMENT}
+      ASPNETCORE_HTTP_PORTS: 3000
+    build:
+      context: .
+      dockerfile: ApiGateway/Dockerfile
+
+  auth:
+    image: agusr99/auth
+    ports:
+      - "30001:3001"
+    environment: 
+      JWTKEY: ${JWTKEY}
+      ASPNETCORE_ENVIRONMENT: ${ASPNETCORE_ENVIRONMENT}
+      ASPNETCORE_HTTP_PORTS: 3001
+      APIGATEWAYBASEADDRESS: ${APIGATEWAYBASEADDRESS}
+      Usuario: ${USUARIO}
+      Password: ${PASSWORD}
+      Servidor: ${SERVIDOR}
+      BD: ${BD}
+    build:
+      context: .
+      dockerfile: Auth/Dockerfile
+
+  sessionapi:
+    container_name: SessionAPI
+    image: agusr99/sessionapi
+    ports:
+      - "30002:3002"
+    environment:
+        ASPNETCORE_ENVIRONMENT: ${ASPNETCORE_ENVIRONMENT}
+        ASPNETCORE_HTTP_PORTS: 3002
+        JWTKEY: ${JWTKEY}
+        Usuario: ${USUARIO}
+        Password: ${PASSWORD}
+        Servidor: ${SERVIDOR}
+        BD: ${BD}
+    build:
+      context: .
+      dockerfile: SessionAPI/Dockerfile
+
+
+  archivosapi:
+    container_name: ArchivosAPI
+    image: agusr99/archivosapi
+    ports:
+      - "30003:3003"
+    environment:
+        ASPNETCORE_ENVIRONMENT: ${ASPNETCORE_ENVIRONMENT}
+        ASPNETCORE_HTTP_PORTS: 3003
+        Usuario: ${USUARIO}
+        Password: ${PASSWORD}
+        Servidor: ${SERVIDOR}
+        BD: ${BD}
+        FTPUSER: ${FTPUSER}
+        FTPPASSWORD: ${FTPPASSWORD}
+        FTPURL: ${FTPURL}
+    volumes:
+        - archivos_files:C:\app\Files
+    build:
+      context: .
+      dockerfile: ArchivosAPI/Dockerfile
+
+
+  clientesapi:
+    container_name: ClientesAPI
+    image: agusr99/clientesapi
+    ports:
+      - "30004:3004"
+    environment:
+        ASPNETCORE_ENVIRONMENT: ${ASPNETCORE_ENVIRONMENT}
+        ASPNETCORE_HTTP_PORTS: 3004
+        Usuario: ${USUARIO}
+        Password: ${PASSWORD}
+        Servidor: ${SERVIDOR}
+        BD: ${BD}
+    build:
+      context: .
+      dockerfile: ClientesAPI/Dockerfile
+
+
+  generalesapi:
+    container_name: GeneralesAPI
+    image: agusr99/generalesapi
+    ports:
+      - "30005:3005"
+    environment:
+        ASPNETCORE_ENVIRONMENT: ${ASPNETCORE_ENVIRONMENT}
+        ASPNETCORE_HTTP_PORTS: 3005
+        Usuario: ${USUARIO}
+        Password: ${PASSWORD}
+        Servidor: ${SERVIDOR}
+        BD: ${BD}
+    build:
+      context: .
+      dockerfile: GeneralesAPI/Dockerfile
+
+
+  logisticaapi:
+    container_name: LogisticaAPI
+    image: agusr99/logisticaapi
+    ports:
+      - "30006:3006"
+    environment:
+        ASPNETCORE_ENVIRONMENT: ${ASPNETCORE_ENVIRONMENT}
+        ASPNETCORE_HTTP_PORTS: 3006
+        Usuario: ${USUARIO}
+        Password: ${PASSWORD}
+        Servidor: ${SERVIDOR}
+        BD: ${BD}
+    build:
+      context: .
+      dockerfile: LogisticaAPI/Dockerfile
+
+
+  repuestoapi:
+    container_name: RepuestoAPI
+    image: agusr99/repuestoapi
+    ports:
+      - "30007:3007"
+    environment:
+        ASPNETCORE_ENVIRONMENT: ${ASPNETCORE_ENVIRONMENT}
+        ASPNETCORE_HTTP_PORTS: 3007
+        Usuario: ${USUARIO}
+        Password: ${PASSWORD}
+        Servidor: ${SERVIDOR}
+        BD: ${BD}
+    build:
+      context: .
+      dockerfile: RepuestoAPI/Dockerfile
+
+
+  tallerapi:
+    container_name: TallerAPI
+    image: agusr99/tallerapi
+    ports:
+      - "30008:3008"
+    environment:
+        ASPNETCORE_ENVIRONMENT: ${ASPNETCORE_ENVIRONMENT}
+        ASPNETCORE_HTTP_PORTS: 3008
+        Usuario: ${USUARIO}
+        Password: ${PASSWORD}
+        Servidor: ${SERVIDOR}
+        BD: ${BD}
+    build:
+      context: .
+      dockerfile: TallerAPI/Dockerfile
+
+  serviceappointmentapi:
+    image: agusr99/serviceappointmentapi
+    ports:
+      - "30009:3009"
+    environment:
+      ASPNETCORE_ENVIRONMENT: ${ASPNETCORE_ENVIRONMENT}
+      ASPNETCORE_HTTP_PORTS: 3009
+      JWTKEY: ${JWTKEY}
+      Usuario: ${USUARIO}
+      Password: ${PASSWORD}
+      Servidor: ${SERVIDOR}
+      BD: ${BD}
+    build:
+      context: .
+      dockerfile: ServiceAppointmentAPI\Dockerfile
+
+volumes:
+  archivos_files:

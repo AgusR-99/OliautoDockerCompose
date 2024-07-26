@@ -1,0 +1,39 @@
+{
+  "profiles": {
+    "Docker Compose": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "composeLaunchAction": "LaunchBrowser",
+      "composeLaunchServiceName": "apigateway",
+      "composeLaunchUrl": "{Scheme}://{ServiceIPAddress}{ServicePort}/{Scheme}://{ServiceHost}:{ServicePort}",
+      "serviceActions": {
+        "auth": "StartDebugging",
+        "apigateway": "StartDebugging",
+        "sessionapi": "StartDebugging",
+        "archivosapi": "StartDebugging",
+        "clientesapi": "StartDebugging",
+        "generalesapi": "StartDebugging",
+        "logisticaapi": "StartDebugging",
+        "repuestoapi": "StartDebugging",
+        "tallerapi": "StartDebugging",
+        "oliautoinformesapi": "DoNotStart"
+      }
+    },
+    "docker-compose-produccion": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "apigateway": "StartDebugging",
+        "archivosapi": "StartDebugging",
+        "auth": "StartDebugging",
+        "clientesapi": "StartDebugging",
+        "generalesapi": "StartDebugging",
+        "logisticaapi": "StartDebugging",
+        "oliautoinformesapi": "StartDebugging",
+        "repuestoapi": "StartDebugging",
+        "sessionapi": "StartDebugging",
+        "tallerapi": "StartDebugging"
+      }
+    }
+  }
+}
