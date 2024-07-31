@@ -188,5 +188,21 @@ services:
       Servidor: ${SERVIDOR}
       BD: ${BD}
 
+  # Si hay que publicar 'oliautoinformesapi', se debe publicar en modo debug para visualizar correctamente endpoints de Swagger
+  oliautoinformesapi:
+    image: agusr99/oliautoinformesapi
+    ports:
+      - "30010:80"
+    environment:
+        Oliauto_PathSis: ${Oliauto_PathSis}
+        Usuario: ${USUARIO}
+        Password: ${PASSWORD}
+        Servidor: ${SERVIDOR}
+        BD: ${BD}
+    build:
+      context: OliautoInformesAPI
+      dockerfile: Dockerfile
+
+
 volumes:
   archivos_files:
