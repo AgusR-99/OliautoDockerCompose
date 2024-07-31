@@ -39,6 +39,8 @@ services:
         ASPNETCORE_ENVIRONMENT: ${ASPNETCORE_ENVIRONMENT}
         ASPNETCORE_HTTP_PORTS: 3002
         JWTKEY: ${JWTKEY}
+        MAILJETAPIKEY: ${MAILJETAPIKEY}
+        MAILJETSECRETKEY: ${MAILJETSECRETKEY}
         Usuario: ${USUARIO}
         Password: ${PASSWORD}
         Servidor: ${SERVIDOR}
@@ -129,6 +131,7 @@ services:
     environment:
         ASPNETCORE_ENVIRONMENT: ${ASPNETCORE_ENVIRONMENT}
         ASPNETCORE_HTTP_PORTS: 3007
+        JWTKEY: ${JWTKEY}
         Usuario: ${USUARIO}
         Password: ${PASSWORD}
         Servidor: ${SERVIDOR}
@@ -169,6 +172,21 @@ services:
     build:
       context: .
       dockerfile: ServiceAppointmentAPI\Dockerfile
+
+  setupapi:
+    image: agusr99/setupapi
+    build:
+      context: .
+      dockerfile: SetupAPI/Dockerfile
+    ports:
+      - "30012:8080"
+    environment:
+      ASPNETCORE_ENVIRONMENT: ${ASPNETCORE_ENVIRONMENT}
+      ASPNETCORE_HTTP_PORTS: 8080
+      Usuario: ${USUARIO}
+      Password: ${PASSWORD}
+      Servidor: ${SERVIDOR}
+      BD: ${BD}
 
 volumes:
   archivos_files:
